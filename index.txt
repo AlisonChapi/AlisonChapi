@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alison Deyanira Chapi Villarreal - Hoja de Vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #008080, #006666);
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .section-title {
+            background-color: rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            margin: 25px 0 15px 0;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info, .links {
+            padding: 0 10px;
+        }
+
+        .contact-item, .link-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 8px 0;
+        }
+
+        .contact-item i, .link-item i {
+            width: 25px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .contact-item a, .link-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover, .link-item a:hover {
+            color: #e0f7fa;
+            text-decoration: underline;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: white;
+        }
+
+        .bio-section {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .bio-section h2 {
+            color: #008080;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 10px;
+        }
+
+        .bio-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #008080;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .interests-list {
+            padding-left: 20px;
+        }
+
+        .interests-list li {
+            margin-bottom: 8px;
+        }
+
+        .portfolio-section {
+            margin-top: 30px;
+        }
+
+        .portfolio-section h2 {
+            color: #008080;
+            margin-bottom: 25px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background-color: #008080;
+            color: white;
+        }
+
+        .years-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .year-btn {
+            padding: 8px 15px;
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .year-btn.active {
+            background-color: #008080;
+            color: white;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-card h4 {
+            color: #008080;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .project-year {
+            background-color: #008080;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .project-location {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .certificate-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid #008080;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        .certificate-item a {
+            color: #008080;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .certificate-item a:hover {
+            text-decoration: underline;
+        }
+
+        .certificate-year {
+            background-color: #008080;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 15px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .bio-section, .project-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="https://placehold.co/150x150?text=Alison+Chapi" alt="Foto de Perfil" class="profile-img">
+            <div class="name">Alison Deyanira<br>Chapi Villarreal</div>
+
+            <div class="section-title">DATOS DE CONTACTO</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:alison.chapi@upec.edu.ec">alison.chapi@upec.edu.ec</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(+593) 981112698</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Tulcán - Carchi</span>
+                </div>
+            </div>
+
+            <div class="section-title">LINKS EXTERNOS</div>
+            <div class="links">
+                <div class="link-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <a href="https://upecedu-my.sharepoint.com/:b:/g/personal/alison_chapi_upec_edu_ec/EQESppD5nmhLljN_Mio8B0kBMBU9isgSSt98Q1-6TVtRyw?e=q6wIA8" target="_blank">Hoja de Vida PDF</a>
+                </div>
+                <div class="link-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="www.linkedin.com/in/erik-pozo-76183627b" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Biography Section -->
+            <div class="bio-section">
+                <h2>BIOGRAFÍA</h2>
+                <div class="bio-text">
+                    <p>Alisson Deyanira Chapi Villarreal es Ingeniera en Logística y Transporte, graduada con distinción de la Universidad Politécnica Estatal del Carchi, Ecuador. A lo largo de su formación, ha desarrollado una sólida especialización en gestión de la cadena de suministro, optimización de procesos logísticos y distribución física internacional. Su capacidad para combinar estrategia y tecnología la ha llevado a trabajar en Encomiendas Ecuador, donde contribuyó a la mejora de la eficiencia operativa y la gestión de la logística interna.</p>
+                    
+                    <p>Con una visión innovadora, ha participado en proyectos académicos que integran soluciones tecnológicas avanzadas, mejorando la competitividad y la sostenibilidad de las operaciones logísticas. Su enfoque multidisciplinario le ha permitido implementar procesos que reducen costos, optimizan tiempos y aumentan la eficiencia de las empresas en mercados globales.</p>
+                </div>
+                
+                <div class="quote">
+                    "Apasionada por transformar la logística en una herramienta estratégica que impulsa el éxito empresarial, buscando siempre la innovación, la eficiencia y la sostenibilidad."
+                </div>
+                
+                <h3>Intereses Personales:</h3>
+                <ol class="interests-list">
+                    <li>Desarrollo profesional continuo</li>
+                    <li>Tecnologías emergentes y su aplicación en logística</li>
+                    <li>Viajar y conocer nuevas culturas</li>
+                    <li>Sostenibilidad y prácticas responsables</li>
+                    <li>Práctica de deportes como senderismo y ciclismo</li>
+                    <li>Lectura sobre desarrollo personal y liderazgo</li>
+                    <li>Innovación y soluciones creativas en logística</li>
+                </ol>
+            </div>
+
+            <!-- Portfolio Section -->
+            <div class="portfolio-section">
+                <h2>PORTAFOLIO DE PROYECTOS</h2>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="consultoria">PROYECTOS CONSULTORÍA</div>
+                    <div class="tab" data-tab="investigacion">PROYECTOS INVESTIGACIÓN</div>
+                    <div class="tab" data-tab="cursos">CURSOS</div>
+                    <div class="tab" data-tab="colaboraciones">COLABORACIONES</div>
+                    <div class="tab" data-tab="certificados">CERTIFICADOS</div>
+                </div>
+
+                <div class="years-container">
+                    <button class="year-btn active" data-year="all">Todos</button>
+                    <button class="year-btn" data-year="2025">2025</button>
+                    <button class="year-btn" data-year="2024">2024</button>
+                    <button class="year-btn" data-year="2023">2023</button>
+                    <button class="year-btn" data-year="2022">2022</button>
+                    <button class="year-btn" data-year="2021">2021</button>
+                    <button class="year-btn" data-year="2020">2020</button>
+                </div>
+
+                <div class="projects-container" id="projectsContainer">
+                    <!-- Projects will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Project data - empty arrays since no projects
+        const projectsData = {
+            consultoria: [],
+            investigacion: [],
+            cursos: [],
+            colaboraciones: []
+        };
+
+        // Certificates data - empty array since no certificates
+        const certificatesData = [];
+
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Load content for the selected tab
+                if (tab.dataset.tab === 'certificados') {
+                    loadCertificates(getCurrentYearFilter());
+                } else {
+                    loadProjects(tab.dataset.tab, getCurrentYearFilter());
+                }
+            });
+        });
+
+        // Year filtering functionality
+        document.querySelectorAll('.year-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all year buttons
+                document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Load content with the selected year filter
+                const currentTab = getCurrentTab();
+                if (currentTab === 'certificados') {
+                    loadCertificates(btn.dataset.year);
+                } else {
+                    loadProjects(currentTab, btn.dataset.year);
+                }
+            });
+        });
+
+        // Helper functions
+        function getCurrentTab() {
+            return document.querySelector('.tab.active').dataset.tab;
+        }
+
+        function getCurrentYearFilter() {
+            return document.querySelector('.year-btn.active').dataset.year;
+        }
+
+        // Load projects based on category and year filter
+        function loadProjects(category, yearFilter) {
+            const container = document.getElementById('projectsContainer');
+            const projects = projectsData[category] || [];
+            
+            // Filter projects by year if not "all"
+            const filteredProjects = yearFilter === 'all' 
+                ? projects 
+                : projects.filter(project => project && project.year && project.year.toString() === yearFilter);
+            
+            // Generate HTML for projects
+            if (filteredProjects.length === 0) {
+                container.innerHTML = '<div class="no-projects" style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">No hay proyectos disponibles para esta categoría y año.</div>';
+                return;
+            }
+            
+            container.innerHTML = filteredProjects.map(project => `
+                <div class="project-card">
+                    <h4>${project.title || 'Proyecto sin título'}</h4>
+                    <div class="project-year">${project.year || 'Año no especificado'}</div>
+                    <div class="project-location">${project.location || 'Ubicación no especificada'}</div>
+                    <div class="project-description">${project.description || 'Descripción no disponible'}</div>
+                </div>
+            `).join('');
+        }
+
+        // Load certificates based on year filter
+        function loadCertificates(yearFilter) {
+            const container = document.getElementById('projectsContainer');
+            
+            // Filter certificates by year if not "all"
+            const filteredCertificates = yearFilter === 'all' 
+                ? certificatesData 
+                : certificatesData.filter(cert => cert && cert.year && cert.year.toString() === yearFilter);
+            
+            // Generate HTML for certificates
+            if (filteredCertificates.length === 0) {
+                container.innerHTML = '<div class="no-projects" style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">No hay certificados disponibles para este año.</div>';
+                return;
+            }
+            
+            container.innerHTML = filteredCertificates.map(cert => `
+                <div class="certificate-item">
+                    <div class="certificate-year">${cert.year || 'Año no especificado'}</div>
+                    ${cert.title || 'Certificado sin título'}. ${cert.location || 'Ubicación no especificada'}. ${cert.date || 'Fecha no especificada'}. 
+                </div>
+            `).join('');
+        }
+
+        // Initialize with first tab and all years
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProjects('consultoria', 'all');
+        });
+    </script>
+</body>
+</html>
